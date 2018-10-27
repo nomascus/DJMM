@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 import pysynth as ps
 from pydub import AudioSegment
 from pydub.playback import play
@@ -16,19 +17,21 @@ import re
 
 #Take the music notes generated from the song
 
-keynotes = ['G4', ' 2', 'C3', ' ', 'G2', 'C2', 'E', 'C#', 'C#4']
+keynotes = sys.argv[1]
+
+#keynotes = ['G4', ' 2', 'C3', ' ', 'G2', 'C2', 'E', 'C#', 'C#4']
 
 test = []
 
 for note in keynotes:
 	note = note.lower()
 	if " 2" == note:
-		value = ['r',2]
+		value = ['r',4]
 		test.append(value)
 
 	elif "2" in note:
 		note_letter = re.search(r"([A-Za-z]+#?)\d?", note)
-		value = [note_letter.group(1),2]
+		value = [note_letter.group(1),4]
 		#print("Found a 2")
 		test.append(value)
 #print(note)
@@ -37,23 +40,23 @@ for note in keynotes:
 #Stay positive
 	elif "4" in note:
 		note_letter = re.search(r"([A-Za-z]+#?)\d?", note)
-		value = [note_letter.group(1)+"5",2]
+		value = [note_letter.group(1)+"5",4]
 		test.append(value)
 			
 #print(test)
 	elif "3" in note:
 		note_letter = re.search(r"([A-Za-z]+#?)\d?", note)
-		value = [note_letter.group(1)+"5",1]
+		value = [note_letter.group(1)+"5",2]
 		test.append(value)
 		
 #print(test)
 	elif " " in note:
-		value = ['r',1]
+		value = ['r',2]
 		test.append(value)
 		
 	else:
 		note_letter = re.search(r"([A-Za-z]+#?)\d?", note)
-		value = [note_letter.group(1),1]
+		value = [note_letter.group(1),2]
 		test.append(value)
 
 #test = (('c', 4), ('e', 4), ('g', 4),
