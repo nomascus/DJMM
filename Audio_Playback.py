@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-import pysynth_e as pse
+import pysynth as ps
 from pydub import AudioSegment
 from pydub.playback import play
 import re
@@ -80,7 +80,7 @@ for note in keynotes:
 #test = (('c', 4), ('e', 4), ('g', 4),
 #		('c5', -2), ('e6', 8), ('d#6', 2))
 
-pse.make_wav(test, fn = "test_real.wav", bpm = 360)
+ps.make_wav(test, fn = "test_real.wav", bpm = 360)
 
 #Using Pydub to play the wav file generated
 sound_file = "test_real.wav"
