@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 import re
+import sys
+
+#This program prints lots of text before it runs so this hides it
+sys.stdout = open("/dev/null", "w")
 import pysynth as ps
+sys.stdout.close()
+sys.stdout = open("/dev/stdout", "w")
+#This ensures the rest of the output is to the command line
+
 from pydub import AudioSegment
 from pydub.playback import play
 
@@ -83,12 +91,13 @@ for note in keynotes:
 		song.append(value)
 
 #Use pysynth to create a music output file
-ps.make_wav(song, fn = "DNA_to_Music.wav", bpm = 360)
-print("DNA_to_Music.wav file created!")
+ps.make_wav(song, fn = "DNA_to_Music.wav", bpm = 360) 
 
 #Using Pydub to play the wav file generated
 sound_file = "DNA_to_Music.wav"
 sound = AudioSegment.from_file(sound_file, format="wav")
+print("DNA_to_Music.wav file created!")
+
 #Play music!
 play(sound)
 
