@@ -19,6 +19,8 @@ for Hit in SearchIO.read(filename, 'blast-text'):#prints out the top hit id and 
 for alignment in SearchIO.read(filename, 'blast-text'):	
 	for hsp in alignment.hsps:#prints out the hsp evalue score
 		print('E-value:',hsp.evalue)
+		print('Hit start:', hsp.hit_start)
+		print('Hit end:', hsp.hit_end)
 	break
 
 
